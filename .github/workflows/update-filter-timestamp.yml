@@ -1,0 +1,59 @@
+name: Update filter database timestamp
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "filters/**"
+
+permissions:
+  contents: write
+
+jobs:
+  update-timestamp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository history
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Record latest filter change time
+        shell: bash
+        run: |
+          FILTER_COMMIT_DATE="$(git log -1 --format=%cI -- filters/)"
+          if [ -z "$FILTER_COMMIT_DATE" ]; then
+            echo "Unable to determine the last filter commit date"
+            exit 1
+          fi
+
+          python3 - "$FILTER_COMMIT_DATE" <<'PY'
+          import json
+          import sys
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          source = datetime.fromisoformat(sys.argv[1].replace("Z", "+00:00"))
+          published = source.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+          path = Path("filters-manifest.json")
+          manifest = json.loads(path.read_text(encoding="utf-8"))
+          manifest["generatedAt"] = published
+          path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(f"Filter database timestamp: {published}")
+          PY
+
+      - name: Commit timestamp
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add filters-manifest.json
+          if git diff --cached --quiet; then
+            echo "Filter timestamp is already current"
+          else
+            git commit -m "Update filter database timestamp"
+            git push origin HEAD:main
+          fi
