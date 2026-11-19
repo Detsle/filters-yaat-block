@@ -1,0 +1,25 @@
+THIRD-PARTY NOTICES — Я@ Block 0.4.4
+
+AdGuard filter rules
+--------------------
+Selected Yandex.Market cosmetic selectors in filters.js are adapted from:
+AdGuardTeam/AdGuardFilters
+File: AnnoyancesFilter/Other/sections/self-promo.txt
+Section: Yandex.Market (upstream lines 2442–2492, reviewed 2026-11-08)
+URL: https://github.com/AdguardTeam/AdguardFilters/blob/master/AnnoyancesFilter/Other/sections/self-promo.txt
+Repository license: GPL-3.0-only (see upstream package.json and repository metadata).
+The relevant license text is included in LICENSE-GPL-3.0.txt.
+
+Other curated filter sources
+----------------------------
+See FILTER-SOURCES.txt for RU AdList / BitBlock sources and their attribution notes.
+
+This extension contains a selected, adapted subset, not a full copy or live
+subscription to any third-party filter list. Website markup and filter rules
+can change; compatibility must be checked against current pages.
+
+User-supplied DOM-derived selectors
+-----------------------------------
+The additional Yandex Video and Yandex Market selectors in version 0.4.3 were
+derived from MHTML page snapshots supplied by the user. They are not copied
+from third-party filter sources.

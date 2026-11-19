@@ -1,0 +1,171 @@
+/* ============================================================================
+   Yandex Market — curated desktop ad placements.
+   Adapted from AdGuardFilters self-promo.txt (Yandex.Market rules, lines 2442-2492).
+   These selectors target known paid widgets, sponsored incuts and ad articles.
+   ============================================================================ */
+
+/* Header spacing after Market banner slots are removed */
+#HeaderDesktop,
+#MainHeader {
+  margin-top: 0 !important;
+}
+
+/* Main and header promotional banners / streamers */
+div[data-apiary-widget-name="@monetize/PromoStreamer"],
+div[data-apiary-widget-name="@card/ShowPlaceVTBPromo"],
+div[data-apiary-widget-name="@monetize/VisibilityLoaderHeroCarousel"],
+div[data-apiary-widget-name="@monetize/Streamer"],
+div[data-apiary-widget-name="@monetize/HeroCarousel"],
+div[data-apiary-widget-name="@marketfront/RecomMediaAdv"],
+div[data-apiary-widget-name="@monetize/IncutConstructor"],
+div[data-apiary-widget-name="@monetize/MadvHeaderPromo"],
+div[data-apiary-widget-name="@marketfront/LiveStreamPreviewPopup"],
+div[data-apiary-widget-name="@monetize/HeroBannersCarousel"],
+div[data-apiary-widget-name="@monetize/HorizontalIncut"],
+div[data-apiary-widget-id="/headBanner"],
+div[data-apiary-widget-id="/content/productMediaBanner"],
+div[id="/header/headerPromo"],
+.w-head-banner,
+[data-zone-name*="headerPromo"],
+.mediaBanner,
+div[data-zone-data*="bannerUrl"]:not([data-zone-name="deals-banner"]) {
+  display: none !important;
+}
+
+/* Sponsored product/recommendation placements */
+article[data-madv],
+article[data-auto="searchIncut"],
+article[data-schema="searchIncut"],
+li[data-schema="searchIncut"],
+div[data-zone-data*="isIncut\":true"],
+.main > noindex:not([data-tid]),
+div[data-apiary-widget-id^="/content/cms/CmsPageLayout-"] div[data-apiary-widget-name="@marketfront/MediaCarousel"] {
+  display: none !important;
+}
+
+
+/* ---------------- Yandex Market: collapse complete ad slots ---------------- */
+/* The actual header creative is wrapped by a banner-manager slot. Hiding only
+   its inner APIary child leaves the large reserved header area in place. */
+div[data-banner-manager-id]:has([data-zone-name="headerPromoStreamer"][data-zone-data*="advTagInfo"]),
+[data-yaat-market-ad-slot="true"] {
+  display: none !important;
+}
+
+
+/* Prepaint stylesheet for Yandex Market. Enabled only through registered category script. */
+@scope (html:not([data-yaat-filter-disabled="yandexMarket"])) {
+/* ============================================================================
+   Yandex Market — curated desktop ad placements.
+   Adapted from AdGuardFilters self-promo.txt (Yandex.Market rules, lines 2442-2492).
+   These selectors target known paid widgets, sponsored incuts and ad articles.
+   ============================================================================ */
+
+/* Header spacing after Market banner slots are removed */
+#HeaderDesktop,
+#MainHeader {
+  margin-top: 0 !important;
+}
+
+/* Main and header promotional banners / streamers */
+div[data-apiary-widget-name="@monetize/PromoStreamer"],
+div[data-apiary-widget-name="@card/ShowPlaceVTBPromo"],
+div[data-apiary-widget-name="@monetize/VisibilityLoaderHeroCarousel"],
+div[data-apiary-widget-name="@monetize/Streamer"],
+div[data-apiary-widget-name="@monetize/HeroCarousel"],
+div[data-apiary-widget-name="@marketfront/RecomMediaAdv"],
+div[data-apiary-widget-name="@monetize/IncutConstructor"],
+div[data-apiary-widget-name="@monetize/MadvHeaderPromo"],
+div[data-apiary-widget-name="@marketfront/LiveStreamPreviewPopup"],
+div[data-apiary-widget-name="@monetize/HeroBannersCarousel"],
+div[data-apiary-widget-name="@monetize/HorizontalIncut"],
+div[data-apiary-widget-id="/headBanner"],
+div[data-apiary-widget-id="/content/productMediaBanner"],
+div[id="/header/headerPromo"],
+.w-head-banner,
+[data-zone-name*="headerPromo"],
+.mediaBanner,
+div[data-zone-data*="bannerUrl"]:not([data-zone-name="deals-banner"]) {
+  display: none !important;
+}
+
+/* Sponsored product/recommendation placements */
+article[data-madv],
+article[data-auto="searchIncut"],
+article[data-schema="searchIncut"],
+li[data-schema="searchIncut"],
+div[data-zone-data*="isIncut\":true"],
+.main > noindex:not([data-tid]),
+div[data-apiary-widget-id^="/content/cms/CmsPageLayout-"] div[data-apiary-widget-name="@marketfront/MediaCarousel"] {
+  display: none !important;
+}
+
+
+/* ---------------- Yandex Market: collapse complete ad slots ---------------- */
+/* The actual header creative is wrapped by a banner-manager slot. Hiding only
+   its inner APIary child leaves the large reserved header area in place. */
+div[data-banner-manager-id]:has([data-zone-name="headerPromoStreamer"][data-zone-data*="advTagInfo"]),
+[data-yaat-market-ad-slot="true"] {
+  display: none !important;
+}
+
+
+/* ============================================================================
+   Yandex Market — CSS-first hiding and compaction for recommendation grids.
+
+   Ad identity is carried by attributes in the incoming markup. The browser
+   hides the complete direct grid cell and overrides explicit row/column
+   coordinates on the remaining items. The existing 0.4.26 JS engine is kept
+   for batch-grid merging, hero-carousel edge cases, and safe restoration when
+   the category is disabled. Its observers now start synchronously at
+   document_start, before APIary/React adds the first cards.
+   ============================================================================ */
+
+.RecomLayout:has(
+  [data-zone-data*="advTagInfo"],
+  [data-zone-name="recomMadv"],
+  article[data-madv],
+  article[data-auto="searchIncut"],
+  article[data-schema="searchIncut"],
+  li[data-schema="searchIncut"]
+) {
+  grid-auto-flow: row dense !important;
+}
+
+.RecomLayout:has(
+  [data-zone-data*="advTagInfo"],
+  [data-zone-name="recomMadv"],
+  article[data-madv],
+  article[data-auto="searchIncut"],
+  article[data-schema="searchIncut"],
+  li[data-schema="searchIncut"]
+) > * {
+  grid-row: auto !important;
+  grid-column: auto !important;
+}
+
+.RecomLayout > :is(
+  [data-zone-data*="advTagInfo"],
+  [data-zone-name="recomMadv"],
+  article[data-madv],
+  article[data-auto="searchIncut"],
+  article[data-schema="searchIncut"],
+  li[data-schema="searchIncut"],
+  :has([data-zone-data*="advTagInfo"]),
+  :has([data-zone-name="recomMadv"]),
+  :has(article[data-madv]),
+  :has(article[data-auto="searchIncut"]),
+  :has(article[data-schema="searchIncut"]),
+  :has(li[data-schema="searchIncut"])
+) {
+  display: none !important;
+}
+
+/* Dynamic fallback markers used by the retained 0.4.26 engine. */
+[data-yaat-market-ad-slot="true"],
+[data-yaat-market-hero-ad="true"],
+[data-yaat-market-hero-slide-ad="true"] {
+  display: none !important;
+}
+
+}

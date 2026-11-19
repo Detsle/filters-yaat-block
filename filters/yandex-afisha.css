@@ -1,0 +1,46 @@
+/* Яндекс Афиша — подтверждённые внешние рекламные контейнеры.
+   1) AdFox branding на страницах рубрик/событий.
+   2) Два динамических рекламных слота afisha-profit.
+   3) На странице события оба AdFox (включая image-only без data-test-id)
+      находятся в одном специальном контейнере .extjkf.
+   Соседние featured banners, промокарточки и карточки событий не затрагиваются. */
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div:has(> div.adfox[data-test-id="rubricPage.rubricAdfoxBranding.adfoxBanner"]),
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div:has(> div.adfox[data-test-id="eventPage.eventAdfoxBranding.adfoxBanner"]),
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div.afisha-profit-banner:has(> div.afisha-profit[data-test-id="bigCommercialBanner.wrapper"]),
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div.afisha-profit-banner:has(> div.afisha-profit[data-test-id="afishaProfit.wrapper"]),
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div.extjkf:has(> div.adfox[id^="adfox--"]) {
+  display: none !important;
+}
+
+
+/* Яндекс Афиша — подтверждённые внешние рекламные контейнеры.
+   1) AdFox branding на страницах рубрик/событий.
+   2) Два динамических рекламных слота afisha-profit.
+   3) На странице события оба AdFox (включая image-only без data-test-id)
+      находятся в одном специальном контейнере .extjkf.
+   Соседние featured banners, промокарточки и карточки событий не затрагиваются. */
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div:has(> div.adfox[data-test-id="rubricPage.rubricAdfoxBranding.adfoxBanner"]),
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div:has(> div.adfox[data-test-id="eventPage.eventAdfoxBranding.adfoxBanner"]),
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div.afisha-profit-banner:has(> div.afisha-profit[data-test-id="bigCommercialBanner.wrapper"]),
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div.afisha-profit-banner:has(> div.afisha-profit[data-test-id="afishaProfit.wrapper"]),
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  div.extjkf:has(> div.adfox[id^="adfox--"]) {
+  display: none !important;
+}
+
+
+/* Полноэкранное рекламное окно на главной Афише. Удаляем только popup,
+   в котором присутствует явная ссылка на юридическую информацию о рекламе. */
+html:not([data-yaat-filter-disabled="yandexAfisha"])
+  [data-test-id="promoFullscreen.root"]:has([data-test-id="promoLegalPopup.link"]) {
+  display: none !important;
+}

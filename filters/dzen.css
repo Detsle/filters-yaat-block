@@ -1,0 +1,207 @@
+
+
+	/* ----------------------------- Главная страница ------------------------------ */
+
+	/* Верхний баннер */
+	#ad-banner,
+	body > div:is(.secondChunkSyncExp, #dzen-root-layout) > div[class*="layoutType"] > div:first-child > div[id] > div:first-child > div > div > div[id]:nth-child(2),
+
+	/* Баннер справа от списка новостей */
+	#LayoutContentMicroRoot > div:only-child > div:only-child > div:only-child > div:first-child > div:last-child,
+
+	/* Баннер справа от списка новостей (RuStore) */
+	#LayoutContentMicroRoot > div:only-child > div:only-child > div:only-child > div:first-child > div:last-child > div:only-child:has(a[href*="trk.mail.ru"]),
+
+	/* Реклама в сетке статей */
+	div[class^="dzen-desktop-"][class*="Desktop-"] > article:is([class*="floorsFeed"], [data-card-type*="-promo"]),
+
+	/* Реклама в списке статей */
+	div[class*="feed-one-column__feed"] > div > div[data-itemid]:has(article[aria-label]),
+
+	/* Реклама в блоке "Интересное" */
+	div[class*="dzen-desktop--topic-subscription-floor__cardsBlock"] > div,
+
+	/* Правая боковая колонка */
+	div[data-testid="right-ad-block"],
+	#LayoutContentMicroRoot > div:only-child > div:only-child > div:only-child > div:last-child > div:last-child > div:only-child:has(> div[style]),
+
+	/* ---------------------------- Всплывающие баннеры ---------------------------- */
+
+	/* Большой popup-баннер */
+	body > div:is([class^="csr-uniq"], [class*="ad-desktop-base"]),
+	body > div:has([data-fullscreen-element-name]),
+
+	/* Большой popup-баннер (Яндекс Браузер) */
+	div[id$="-splashscreen"],
+
+	/* Установите Я.Браузер (левый верхний угол) */
+	div[id$="-popup"],
+
+	/* Установите Я.Браузер (правый нижний угол) */
+	div[id$="-teaser"],
+
+	/* Любимые авторы в МАХ (правый нижний угол) */
+	body > div:has(> [class*="marketing-snackbar-desktop__snackbar"]),
+
+	/* Ваша версия браузера устарела (по центру) */
+	body > div[class*="modal__rootElement"]:has([class*="browser-switch-trap"]),
+
+	/* Замечен на странице статьи (левый нижний угол) */
+	div[class*="content--mascot-banner"][class*="__container"],
+
+	/* Дзен без рекламы (левый нижний угол) */
+	div[class*="corner-banner"],
+
+	/* Дзен без рекламы (мобильная версия) */
+	body > div[data-testid="dzen-pro-fullscreen"],
+
+	/* Страница новости, новый формат (левый нижний угол) */
+	body > div:has(> button[style^="width"]):has([id*="floor_"]),
+	body > div:is([id*="floor-ad"], [class*="floor-ad"], [data-testid*="floor-ad"]), /* Для пользователя Василия из комментариев */
+
+	/* --------------------------- Общая страница статей --------------------------- */
+
+	/* Большой верхний баннер ставок в рубрике "Спорт" (вероятно временный) */
+	div[class*="topic-channel-desktop__page"] > div:has(> div[class*="advertisingLabel"]),
+
+	/* Небольшой баннер ставок сверху в рубрике "Спорт" (вероятно временный) */
+	div[class*="portsButtonAd"], div:has(> [id$="-sports_button"]),
+
+	/* Реклама в сетке статей */
+	div[class*="adaptive-card-grid__container"] > #article-showcase-card-rtb,
+	div[class*="redesign-feed"] > div:only-child > div:first-child > div:only-child > div[id]:has(> article[aria-label]),
+
+	/* Реклама в сетке статей (топики) */
+	div[class*="adaptive-card-grid"] > article#card-rtb,
+
+	/* ------------------------------ Страница статьи ------------------------------ */
+
+	/* Верхний баннер */
+	div[class*="topBannerContainer"],
+	.content-id-for-morda div[itemscope] > div:not(.article-container):has(> [id]),
+
+	/* Правая боковая колонка */
+	div[class*="article-full-right-ad-column"],
+	.content-id-for-morda div[itemscope] > div.article-container > div:not([class*="contentColumn"]) > div:not([class*="sideInfoBlock"]),
+
+	/* В теле статьи */
+	/* div[data-testid*="embed-block_external"], */
+
+	/* В конце статьи, перед комментариями */
+	div[data-testid="bottom-ad"],
+	.content-id-for-morda div[itemscope] > div.article-container > div[class*="contentColumn"] > div > div[class^="_theme"] > div:last-child:not([class]),
+
+	/* В конце статьи, под комментариями */
+	.content-id-for-morda div[itemscope] > div.article-container > div[class*="contentColumn"] > div > div[class*="bottomAdUnderComments"],
+
+	/* Между статьями (первый элемент - заглушка, второй - реклама) */
+	.content-id-for-morda div[itemscope] > div.article-container > div[class*="contentColumn"] > div > div[class*="article-between-items-ad-block"],
+	.content-id-for-morda div[itemscope] > div.article-container > div[class*="contentColumn"] > div > div[class*="positionArticleBetweenItems"],
+
+	/* Дзен Про в конце статьи, перед комментариями */
+	div[class*="dzen-pro-article-banner"],
+
+	/* В блоке "Рекомендуем почитать" */
+	div[class*="cardsSection"] > div:has([class*="ad-split-embed"]),
+	div[class*="cardsSection"] > div:last-child,
+
+	/* -------------------------- Общая страница новостей -------------------------- */
+
+	/* Верхний баннер (капризный) */
+	#ad-tsar,
+	#LayoutContentMicroRoot > div[aria-label][id] div:has(> .news-rubricator) + div:has(> div:only-child > div:only-child[id]),
+
+	/* Правая боковая колонка (верхний и нижний) */
+	#ad-column_top, #ad-column_bottom,
+	div[class^="news-"] > div > div[id$="-column_top"],
+	div[class^="news-"] > div > div[id$="-column_bottom"],
+
+	/* Верхний слитый с правым в один баннер */
+	#ad-news_branding,
+
+	/* Правый слитый с верхним в один баннер */
+	div[class*="BrandingAdvertLayoutColumn"],
+	#LayoutContentMicroRoot > div[aria-label][id] div:has(> .news-rubricator) ~ div[aria-label*="сюжет"] > div:has(section):has(~ div:nth-child(3)) ~ div,
+
+	/* Рекламный блок в новостных категориях */
+	#ad-feed, #ad-footer,
+	div[class$="__news"] > section > div > div[id$="-feed"],
+
+	/* ----------------------------- Страница новости ------------------------------ */
+
+	/* В теле новости, между абзацами */
+	div[id^="story-body-scrollable"] .digest-inner-ad,
+
+	/* В конце каждой новости */
+	#ad-banger, #ad-subsequent_banger,
+	div[class$="__content"] > div[class*="__self"] > section + div[id]:not([class*="news-dzen-content"]),
+	div[aria-label*="сюжет"] > div[class^="news-"] > div[id*="-"], /* Новый формат */
+
+	/* Правый боковой */
+	div[class*="Item-desktop__content"] > div[id$="-column_top"],
+	div[aria-label*="сюжет"] div[style*="height"] > div:only-child > div:has(> div:only-child[class^="news-"]), /* Новый формат */
+
+	/* Во всплывающем блоке комментариев (после первого) */
+	div[data-microappname="CommentsMicroApp"] div[class*="modal-layout__content"] > div > div:nth-child(2):not([class]),
+
+	/* ------------------------- Страница просмотра видео -------------------------- */
+
+	/* В окне ролика */
+	div[class*="-player__controls"] > div[class*="-video-content-overlay-slot"],
+
+	/* Под видео */
+	div[class*="video-viewer-content__wrapper"] > div:has(#video-bottom-content),
+	div[class*="viewer-layout__content"] > div[class*="content__wrapper"] > div[class*="videoViewerItemInfo"] + div:not([class]),
+
+	/* Под комментариями */
+	div[class*="video-modal-comments__isVideoViewer"] > div[class*="vertUnderComments"],
+
+	/* В комментариях */
+	div[class*="video-modal-comments__isVideoViewer"] div[class*="comments-advert"],
+
+	/* В правой колонке */
+	div[class*="video-view-sidebar__item"] div[class*="video-card-ad_"],
+	div[class*="video-view-sidebar__item"] > div[class$="-2v"][aria-label]:has(+ [class*="videoViewerRecommended"]),
+	div[class*="video-view-sidebar__item"] > div[class*="videoViewerRecommended"] > div > div > div[class$="-2v"]:not([id], [data-item-id]),
+
+	/* ------------------------- Страница поисковой выдачи ------------------------- */
+
+	/* Всё */
+	div[class*="search--feed__withExtraIndent"] > div[data-itemid^="0"],
+
+	/* Новости */
+	#LayoutContentMicroRoot > div[aria-label][id] > div > div > div:first-child:has(~ [aria-label="Поисковые фильтры"])
+
+	/* --------------------------- Прощаемся с рекламой ---------------------------- */
+
+	{display: none !important}
+
+	/* ------------------------------- Прочие стили -------------------------------- */
+
+	/* Открываем блок справа от списка новостей на главной, если в нем темы для Дзена */
+	/* #LayoutContentMicroRoot > div:only-child > div:only-child > div:only-child > div:first-child > div:last-child:has([class*="trends-entry-desktop"]) {display: block !important} */
+
+	/* Устраняем мелькание скрытых блоков в области верхнего баннера на главной странице */
+	body > div:is(.secondChunkSyncExp, #dzen-root-layout) > div[class*="layoutType"] > div:first-child > div[id] > div:first-child > div > div > div ~ div {position: absolute !important}
+
+	/* Разблокируем скролл тела (блочится при всплытии popup-баннеров) */
+	body {overflow: visible !important; position: static !important}
+
+
+
+/* RU AdList / BitBlock Dzen ad markers — standard CSS subset. */
+.adv-skeleton___main,
+[data-testid="bottom-ad"],
+[data-testid="right-ad-block"],
+[data-type="rtb_card"],
+[aria-label^="Рекл"],
+[aria-label^="Peкл"],
+div[class*="_isRtb-"],
+div[class*="_rightAdWrapper"],
+div[class*="topBanner"],
+div[class^="dzen-desktop--feed-one-column-ad_"],
+div[class^="video"][class*="-advert-"],
+article:has(> div[data-ad-type]),
+div[class*="article-render-mobile__embed_embed-type_yandex-direct"] {
+  display: none !important;
+}

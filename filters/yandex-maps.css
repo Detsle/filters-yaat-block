@@ -1,0 +1,14 @@
+/* Yandex Maps: the R-I banner is hosted in a closed Shadow DOM.
+   Hide only the externally visible banner host; selector checked against both supplied Maps snapshots. */
+html:not([data-yaat-filter-disabled="yandexMaps"])
+  div.banner-view[id*="R-I-"] {
+  display: none !important;
+}
+
+
+/* Yandex Maps: the R-I banner is hosted in a closed Shadow DOM.
+   Hide only the externally visible banner host; selector checked against both supplied Maps snapshots. */
+html:not([data-yaat-filter-disabled="yandexMaps"])
+  div.banner-view[id*="R-I-"] {
+  display: none !important;
+}

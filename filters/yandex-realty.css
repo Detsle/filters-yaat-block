@@ -1,0 +1,10 @@
+/* CSS is supplied by css/yandexRealty.css at document_start. */
+
+/* Яндекс Недвижимость — пустой 1201×96 рекламный слот на главной.
+   Внешний banner-container содержит realtyads-index-page-spec с AdFox
+   custom elements. Скрывается только контейнер этого ad-slot; карточки
+   недвижимости и остальные promo/service banners остаются на месте. */
+html:not([data-yaat-filter-disabled="yandexRealty"])
+  div[class*="IndexPageSnippetsWithPromo__banner--"][class*="IndexPageSnippetsBanner__container--"]:has(> div > realtyads-index-page-spec > realtyads-adfox) {
+  display: none !important;
+}

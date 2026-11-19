@@ -1,0 +1,20 @@
+/* Yandex Eda — ONLY the visible top sponsored carousel from the supplied snapshot.
+   The single y99-i/y9kz5 host contains ten RXdvH slides. Each slide contains
+   .urbanads-dark and the explicit .ThRuh "Реклама" marker. Hide the whole carousel
+   (including its controls and reserved height); do not touch restaurant cards,
+   organic offers, grid cells, or favorites. */
+html:not([data-yaat-filter-disabled="yandexEda"])
+  div.y99-i.y9kz5:has(> section.YHSoO > .RXdvH > ._9ggTD.urbanads-dark .ThRuh) {
+  display: none !important;
+}
+
+
+/* Yandex Eda — ONLY the visible top sponsored carousel from the supplied snapshot.
+   The single y99-i/y9kz5 host contains ten RXdvH slides. Each slide contains
+   .urbanads-dark and the explicit .ThRuh "Реклама" marker. Hide the whole carousel
+   (including its controls and reserved height); do not touch restaurant cards,
+   organic offers, grid cells, or favorites. */
+html:not([data-yaat-filter-disabled="yandexEda"])
+  div.y99-i.y9kz5:has(> section.YHSoO > .RXdvH > ._9ggTD.urbanads-dark .ThRuh) {
+  display: none !important;
+}

@@ -1,0 +1,161 @@
+
+
+	[aria-label="Результаты поиска"] > *:has(a[data-vnl], a[href*="yabs.yandex"], a[href^="https://yandex."][href*="/search/_"], a[href^="https://ya."][href*="/search/_"], .AdvGallery):not(:has(.FuturisGPTMessage)),
+	.main__carousel-item_type_product_gallery:has(a[data-vnl], a[href*="yabs.yandex"], a[href^="https://yandex."][href*="/search/_"], a[href^="https://ya."][href*="/search/_"]),
+	.FuturisGPTMessage > div:has(a[data-vnl], a[href*="yabs.yandex"], a[href^="https://yandex."][href*="/search/_"], a[href^="https://ya."][href*="/search/_"]) {display: none !important;}
+
+
+
+
+/* ---------------------- Реклама в поисковых подсказках ---------------------- */
+
+/* Рекламная навигационная подсказка: прямая ссылка через yabs.yandex.ru */
+li.mini-suggest__item[data-type="nav"][data-suggest-counter*="yabs.yandex.ru/count"],
+li.mini-suggest__item[data-type="nav"]:has(> a[href*="yabs.yandex.ru/count"]) {
+  display: none !important;
+}
+
+
+/* ------------------------ Реклама в видеопоиске Яндекса ------------------------ */
+
+/* Рекламный видеосниппет: скрываем карточку целиком (если родитель содержит контент) */
+div:has(> .VideoSnippet-Content:has(.VideoSnippet-AdvHost .AdvLabel)),
+.VideoSnippet-Content:has(.VideoSnippet-AdvHost .AdvLabel) {
+  display: none !important;
+}
+
+/* Премиум-рекламные карточки в поисковой выдаче */
+.AdvPremium:has(> .AdvPremium-Default .AdvLabel),
+.AdvPremium:has(> .AdvPremium-Default a[href*="yabs.yandex.ru/count"]) {
+  display: none !important;
+}
+
+
+/* --------------------------- Yandex Images Viewer --------------------------- */
+/* Empty ad-partner slot in the image viewer sidebar. Hide the host container,
+   not the closed Shadow DOM internals. */
+div[id^="ya_partner_"][id$="-ImagesViewer-SidebarAdv"] {
+  display: none !important;
+}
+
+/* ------------------------- Yandex Video search ads ------------------------- */
+/* Some video ad cards keep the same VideoSnippet structure but expose their
+   label inside the AdvHostContainer. Hide the whole snippet and its wrapper. */
+.VideoSnippet-Content:has(.VideoSnippet-AdvHostContainer .AdvLabel),
+div:has(> .VideoSnippet-Content:has(.VideoSnippet-AdvHostContainer .AdvLabel)) {
+  display: none !important;
+}
+
+
+
+
+
+
+/* ---------------- FuturisSnippet sponsored search cards ---------------- */
+/* The overlay link itself covers the card. Use its YABS click URL to hide
+   only the containing FuturisSnippet; organic snippets remain visible. */
+.FuturisSnippet:has(.FuturisSnippet-OverlayLink[href*="yabs.yandex.ru/count/"]) {
+  display: none !important;
+}
+
+
+/* ---------------------- Alice / Futuris AdvSnippet ads ---------------------- */
+/* The supplied Alice snippets expose a YABS URL in the title link and an
+   AdvLabel in the actions area. Require both markers before hiding the whole
+   section so normal snippets and unrelated page elements remain untouched. */
+.AdvSnippet:has(> .AdvSnippet-Title > a[href*="yabs.yandex.ru/count/"]):has(.AdvSnippet-AdvLabel .AdvLabel) {
+  display: none !important;
+}
+
+
+/* ---------------------- Yandex homepage display ads ---------------------- */
+/* Paid portrait thumbnail on the Yandex home page. The YABS count URL is a
+   precise ad marker; ordinary Thumb links and images remain untouched. */
+a.Thumb[href*="yabs.yandex.ru/count/"] {
+  display: none !important;
+}
+
+
+/* ---------------- Yandex recommendation-feed sponsored cards --------------- */
+/* Paid linkSnippet creatives in @monetize/MediaContent expose advertiser
+   metadata (advTagInfo) in data-zone-data. Hide the complete ad card host,
+   but do not hide the recommendation widget or organic sibling items. */
+div[data-apiary-widget-name="@monetize/MediaContent"]:has(> div[data-zone-name="linkSnippet"][data-zone-data*="advTagInfo"]),
+div[data-apiary-widget-name="@monetize/MediaContent"]:has(a[href*="/an/count/"][href*="tag=madv_desktop_"][data-show-uid]) {
+  display: none !important;
+}
+
+
+/* ============================================================================
+   RU AdList / BitBlock compatibility subset — reviewed 2026-11-08.
+   Only standard CSS selectors were imported/adapted. uBO-only operators are
+   intentionally not present here. These rules run only in Yandex Search,
+   Images and Video category contexts selected by content.js.
+   ============================================================================ */
+
+/* RU AdList: Yandex search and Direct placements */
+.AdvProductGallery,
+.Bno_isPromoSnippet,
+.ImagesApp .AdvPremium-List,
+.layout__banner,
+.main-home-banner,
+.main__block-banner,
+.main__distr-popup,
+.Organic_withPromoOffer,
+[id^="search-"] .SportAdfox,
+div[class^="AdvRsya"],
+.AdvRsya-Slot,
+.b-direct,
+.b-spec-adv,
+.b-yabrowser-promo,
+.container__banner,
+.direct-view,
+.dist-overlay__popup,
+.i-bem.adsrv,
+.i-bem.stripe_type_promo,
+.serp-adv__add,
+.serp-adv__all,
+.spec-adv,
+.t-construct-adapter__adv,
+#banner.b-banner__content,
+.Ad > .Ad-Container ~ .Ad-Spinner,
+.SearchPageGrid-Item_direct,
+.adv_pos_compare-bottom,
+.adv_pos_compare-side,
+.adv_pos_popup,
+.blocks-grid__item_static > .direct_type_stripe,
+.serp.main__carousel .Label_theme_direct,
+[id*="R-I-"][style*="height:"]:empty,
+div[data-block="banner-view"],
+div[class^="b-spec-adv"],
+.AdvMastHead,
+.ImagesViewer-SidebarAdv {
+  display: none !important;
+}
+
+/* RU AdList CSS Fixes: sponsored autocomplete links. Use only precise click
+   tracking markers; the source's broader target=_blank rules are not imported
+   because ordinary suggestions may also open a new tab. */
+[class*="mini-suggest__item"]:has(> a[href*="://yabs.yandex."][href*="/count/"]),
+[id^="suggest-item-"]:has(> a[href*="://yabs.yandex."][href*="/count/"]),
+[class*="mini-suggest__item"]:has(> a[href*="://yandex."][href*="/clck/"]),
+[id^="suggest-item-"]:has(> a[href*="://yandex."][href*="/clck/"]) {
+  display: none !important;
+}
+
+/* RU AdList: Yandex Video viewer / Direct slots */
+.VideoViewer-Direct,
+.DirectStripe,
+.VideoViewer .Viewer-ScrollContainer > div[class]:first-child > div[id][class]:first-child:empty + div,
+div[class*="VideoViewer-Block"] > .VideoPlayerMetaInfo ~ div:has(> div[id]:empty) {
+  display: none !important;
+}
+
+
+/* -------------------- Yandex Video: real page containers -------------------- */
+/* The saved video-search page contains explicit paid groups in these outer LI
+   wrappers. Hide the whole advertising group, not only its text/thumbnail. */
+li.SearchBlock.AdvSnippetFeature,
+li.DirectFeature:has(.DirectInlineContainer) {
+  display: none !important;
+}

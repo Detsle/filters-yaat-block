@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "filterVersion": "1.0.0",
+  "generatedAt": "2026-11-19T00:00:00Z",
+  "minimumExtensionVersion": "0.4.61.7",
+  "categories": {
+    "dzenSuggest": {
+      "path": "filters/dzen-suggest.css",
+      "sha256": "e146fc2d1aff907898195a17e4a64b206ce1239ba3bfee8703b057c0ff09c3e7",
+      "bytes": 117
+    },
+    "dzen": {
+      "path": "filters/dzen.css",
+      "sha256": "1e4c9207b6cc53e0395d33a60a2cf6800ca457c46b94d3e2390a22a182adaf7a",
+      "bytes": 10867
+    },
+    "mail": {
+      "path": "filters/mailru.css",
+      "sha256": "fb3170b7252fd8d14f0031f7f3c195717ba980fef91012957134282d3bf8eee3",
+      "bytes": 9577
+    },
+    "yandexMail": {
+      "path": "filters/yandex-mail.css",
+      "sha256": "7e0d5ed7faede3d94aeffb8dd041c96aad0dd3ce23c6af52e7d6d64abbcc4578",
+      "bytes": 3178
+    },
+    "yandexSearch": {
+      "path": "filters/yandex-search.css",
+      "sha256": "fd09545601d1427841a879e8886ddb3eb5665663caceb45a60de2131d14d0c24",
+      "bytes": 6698
+    },
+    "yandexWeather": {
+      "path": "filters/yandex-weather.css",
+      "sha256": "8f855e16beac43fb3d1c53fe3e917b871f565a0fe546b22081b7a66379746c85",
+      "bytes": 1576
+    },
+    "yandexMetro": {
+      "path": "filters/yandex-metro.css",
+      "sha256": "e698664e6866ac6a7b29007f757099fec471df89ebfcd35587556b7ff5ad01ae",
+      "bytes": 523
+    },
+    "yandexMarket": {
+      "path": "filters/yandex-market.css",
+      "sha256": "f10307d85baccb7e73f2687635e6fa569078b2a2f9dc1f115e01a4f4efb47f9b",
+      "bytes": 6689
+    },
+    "yandexMaps": {
+      "path": "filters/yandex-maps.css",
+      "sha256": "c64823c9a4ecc8a55e1856096da01302eb801fad05a08e8523e3866670e44b06",
+      "bytes": 572
+    },
+    "yandexEda": {
+      "path": "filters/yandex-eda.css",
+      "sha256": "7e1e7c38fb0d01483abc5720b2da665c2c6499b647efe2b2a23d5603e1fe9176",
+      "bytes": 1090
+    },
+    "yandexAfisha": {
+      "path": "filters/yandex-afisha.css",
+      "sha256": "3454a698c27a75b008f8ed189b47756bf85c23258c7892a107d71d503edfe1af",
+      "bytes": 3034
+    },
+    "yandexTelemost": {
+      "path": "filters/yandex-telemost.css",
+      "sha256": "83e046481e1514a7955320d7f14c9e8b1948b26227c0f06a93be432d91557d50",
+      "bytes": 850
+    },
+    "yandexRealty": {
+      "path": "filters/yandex-realty.css",
+      "sha256": "1e3097c1c9320f3a13c3b27baf8fe65f6cbd2c1734e1fa36ab5532401cc8bf38",
+      "bytes": 730
+    },
+    "kinopoisk": {
+      "path": "filters/kinopoisk.css",
+      "sha256": "986e35481ef813e8e4a36bfc9ec09a71e4fc5b3b8a2b709e4011f46cd076dab1",
+      "bytes": 1672
+    }
+  }
+}

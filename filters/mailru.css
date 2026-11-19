@@ -1,0 +1,183 @@
+
+
+	/* ----------------------------- Главная страница ------------------------------ */
+
+	/* Верхний баннер */
+	.application_new-toolbar div:has(+ .new-menu),
+
+	/* Правая боковая колонка */
+	.application_new-toolbar div[class*="_"]:has(~ #portal-overlay) > div > div[class*=" "] ~ div[class*=" "],
+
+	/* В списке писем */
+	.ReactVirtualized__Grid__innerScrollContainer > div[style^="height: 60px"],
+
+	/* Встроенный баннер VK/Mail Motion Ads в списке писем. */
+	.letter-list-item-adv:has(> .letter-list-item-adv__container > .letter-list-item-adv__adv-content > .mailru-visibility-check > .trg-b-wrap.trg-b-banner-block),
+
+	/* Верхний popup-баннер */
+	.balloon-anchor:has(.balloon_ad-info),
+
+	/* Большой popup-баннер */
+	body > .mini-notify-stack,
+	body > div[data-banner-dom-node],
+	body > div[style]:has(> [id^="trg-"]),
+	.application-mail > .react-async:has(.vkuiPopoutRoot),
+
+	/* Всплывашка снизу "Кажется, возникла проблема из-за блокировщика рекламы" */
+	body > div:has(.button-help)
+
+	/* --------------------------- Прощаемся с рекламой ---------------------------- */
+
+	{display: none !important}
+
+	/* Сжимаем зарезервированную ячейку React Virtualized после скрытия Motion Ads. */
+	.ReactVirtualized__Grid__innerScrollContainer[data-yaat-mail-collapse="true"][data-yaat-mail-has-base-height="true"] {
+		height: max(0px, calc(var(--yaat-mail-base-height) - var(--yaat-mail-collapse-height))) !important;
+	}
+
+	.ReactVirtualized__Grid__innerScrollContainer[data-yaat-mail-has-max-height="true"] {
+		max-height: max(0px, calc(var(--yaat-mail-base-max-height) - var(--yaat-mail-collapse-height))) !important;
+	}
+
+	.ReactVirtualized__Grid__innerScrollContainer > [data-yaat-mail-ad-cell="true"] {
+		height: 0 !important;
+	}
+
+	.ReactVirtualized__Grid__innerScrollContainer > [data-yaat-mail-ad-cell="true"] .letter-list-item-adv {
+		display: none !important;
+	}
+
+	/* Соседняя нулевая promo-заглушка может визуально выступать за свою высоту. */
+	.ReactVirtualized__Grid__innerScrollContainer[data-yaat-mail-collapse="true"] > div:has(> .promo-block-letter) {
+		display: none !important;
+	}
+
+	.ReactVirtualized__Grid__innerScrollContainer > [data-yaat-mail-shifted="true"] {
+		transform: translateY(calc(0px - var(--yaat-mail-row-shift))) !important;
+	}
+
+	/* ------------------------------- Прочие стили -------------------------------- */
+
+	/* Перерассчитываем высоту списка писем без учета рекламы */
+	.application_new-toolbar .letter-list__react > div[data-qa-id^="letter-list"]
+	{height: calc(100% - var(--letter-list-top-toolbar-height, 0px) - var(--vkui--octavius_size_portal-footer_height--regular, 0px) - var(--spec-project-padding, 0px))}
+
+	/* Перерассчитываем высоту блока письма без учета рекламы */
+	.application_new-toolbar .new-menu.content-header + div:has(.thread)
+	{height: calc(100vh - var(--vkui--octavius_size_headline_height--regular) - var(--vkui--octavius_size_portal-menu_height--regular, 56px) - var(--search-outside-portal, 0) * (var(--search-panel-height, 36px) + var(--no-headline-search-panel-padding-bottom, 12px) + var(--no-headline-search-panel-padding-top, 12px)))}
+
+
+
+
+/* Prepaint stylesheet for Mail.ru. Enabled only through registered category script. */
+@scope (html:not([data-yaat-filter-disabled="mail"])) {
+
+
+	/* ----------------------------- Главная mail.ru ------------------------------- */
+	/* Внешние коммерческие промобаннеры на главной. */
+	.tgbv-wrapper:has(> .tgbv-wrapper__container > [id^="commercial_"]),
+
+	/* RTB-карточки в ленте главной. Обычные карточки публикаций и видео не имеют
+	   aria-label="Карточка рекламы" и data-testid="card-rtb" одновременно. */
+	article[aria-label="Карточка рекламы"][data-testid="card-rtb"],
+
+	/* Главная Mail.ru: remove the complete 940x90 TGB slot under search.
+	   The ad marker may be nested differently across Motion Ads creatives, so
+	   match the outer trap by the stable mailru visibility wrapper + trg-b host. */
+	.tgb-wrapper__trap:has(.mailru-visibility-check div[id^="trg-b-"]),
+
+	/* --------------------------- Интерфейс Почты mail.ru ------------------------- */
+
+	/* Верхний баннер */
+	.application_new-toolbar div:has(+ .new-menu),
+
+	/* Правая рекламная колонка нового трёхпанельного интерфейса:
+	   содержит рекламный слот и кнопку "Убрать рекламу за 1 ₽". Скрываем
+	   только правый layout-column, внутри которого расположен advert-column. */
+	.layout__column_right:has(> .layout__overflow-container > .advert-column),
+
+	/* app.mail.ru Docs/Cloud cross-origin frames: the right sidebar contains only
+	   the labelled ad panel and VK Motion Ads creative(s). Hide it as one slot. */
+	#sidebar-banner,
+
+	/* Старый вариант правой боковой колонки */
+	.application_new-toolbar div[class*="_"]:has(~ #portal-overlay) > div > div[class*=" "] ~ div[class*=" "],
+
+	/* В списке писем */
+	.ReactVirtualized__Grid__innerScrollContainer > div[style^="height: 60px"],
+
+	/* Встроенный баннер VK/Mail Motion Ads в списке писем. */
+	.letter-list-item-adv:has(> .letter-list-item-adv__container > .letter-list-item-adv__adv-content > .mailru-visibility-check > .trg-b-wrap.trg-b-banner-block),
+
+	/* VK Motion Ads in the Mail.ru interface: hide the outer trg-b host,
+	   identified by its nested Motion Ads creative and explicit ad-label marker. */
+	div[id^="trg-b-"]:has(> div[id^="trg-b-"] > div[id^="b"][style*="--mkext-bRadius"] ._mk_adhsn_label),
+
+	/* Верхний popup-баннер */
+	.balloon-anchor:has(.balloon_ad-info),
+
+	/* Промо-popup «Что нового в Mail» / подписка на канал MAX. */
+	body > .mini-notify-stack:has([class*="divkit-"]),
+
+	/* Большой popup-баннер */
+	body > .mini-notify-stack,
+	body > div[data-banner-dom-node],
+	body > div[style]:has(> [id^="trg-"]),
+	.application-mail > .react-async:has(.vkuiPopoutRoot),
+
+	/* Всплывашка снизу "Кажется, возникла проблема из-за блокировщика рекламы" */
+	body > div:has(.button-help)
+
+	/* --------------------------- Прощаемся с рекламой ---------------------------- */
+
+	{display: none !important}
+
+	/* Сжимаем зарезервированную ячейку React Virtualized после скрытия Motion Ads. */
+	.ReactVirtualized__Grid__innerScrollContainer[data-yaat-mail-collapse="true"][data-yaat-mail-has-base-height="true"] {
+		height: max(0px, calc(var(--yaat-mail-base-height) - var(--yaat-mail-collapse-height))) !important;
+	}
+
+	.ReactVirtualized__Grid__innerScrollContainer[data-yaat-mail-has-max-height="true"] {
+		max-height: max(0px, calc(var(--yaat-mail-base-max-height) - var(--yaat-mail-collapse-height))) !important;
+	}
+
+	.ReactVirtualized__Grid__innerScrollContainer > [data-yaat-mail-ad-cell="true"] {
+		height: 0 !important;
+	}
+
+	.ReactVirtualized__Grid__innerScrollContainer > [data-yaat-mail-ad-cell="true"] .letter-list-item-adv {
+		display: none !important;
+	}
+
+	/* Соседняя нулевая promo-заглушка может визуально выступать за свою высоту. */
+	.ReactVirtualized__Grid__innerScrollContainer[data-yaat-mail-collapse="true"] > div:has(> .promo-block-letter) {
+		display: none !important;
+	}
+
+	.ReactVirtualized__Grid__innerScrollContainer > [data-yaat-mail-shifted="true"] {
+		transform: translateY(calc(0px - var(--yaat-mail-row-shift))) !important;
+	}
+
+	/* ------------------------------- Прочие стили -------------------------------- */
+
+	/* Перерассчитываем высоту списка писем без учета рекламы */
+	.application_new-toolbar .letter-list__react > div[data-qa-id^="letter-list"]
+	{height: calc(100% - var(--letter-list-top-toolbar-height, 0px) - var(--vkui--octavius_size_portal-footer_height--regular, 0px) - var(--spec-project-padding, 0px))}
+
+	/* Перерассчитываем высоту блока письма без учета рекламы */
+	.application_new-toolbar .new-menu.content-header + div:has(.thread)
+	{height: calc(100vh - var(--vkui--octavius_size_headline_height--regular) - var(--vkui--octavius_size_portal-menu_height--regular, 56px) - var(--search-outside-portal, 0) * (var(--search-panel-height, 36px) + var(--no-headline-search-panel-padding-bottom, 12px) + var(--no-headline-search-panel-padding-top, 12px)))}
+
+
+
+
+/* Mail.ru creates this ad wrapper before the creative is downloaded. Hide the
+   creative immediately; the document_start observer collapses the virtual cell
+   and translates later rows using the row's original inline height. Do not set
+   the unmarked cell height here: React Virtualized must retain its source geometry
+   until the extension has read it. */
+.ReactVirtualized__Grid__innerScrollContainer .letter-list-item-adv {
+  display: none !important;
+}
+
+}

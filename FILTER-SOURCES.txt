@@ -1,0 +1,84 @@
+Я@ Block 0.4.1 — источники и совместимость фильтров
+
+Снимки источников проверены 08.11.2026. В расширение включена выборочная,
+адаптированная подборка CSS-правил для Яндекса, Дзена, Почты и Диска.
+
+1. RU AdList: BitBlock + Fanboy's General
+   https://raw.githubusercontent.com/dimisa-RUAdList/bitblock-mirror/refs/heads/main/bitblock.txt
+   В заголовке BitBlock указана лицензия CC BY 3.0; также указана атрибуция
+   фрагментов Fanboy's General и CC BY 3.0.
+
+2. RU AdList (advblock.txt, перенаправляется на ruadlist.txt)
+   https://easylist-downloads.adblockplus.org/advblock.txt
+   В заголовке исходного списка указана лицензия CC-BY.
+
+3. RU AdList CSS Fixes
+   https://raw.githubusercontent.com/easylist/ruadlist/master/css-fixes-experimental.txt
+   Сам список отмечен авторами как поддерживаемый только uBlock Origin.
+   В Я@ Block включены только стандартные CSS-селекторы без uBO-операторов.
+
+4. RU AdList JS Fixes
+   https://raw.githubusercontent.com/easylist/ruadlist/master/js-fixes-experimental.txt
+   Правила с :remove(), :matches-prop(), :matches-attr(), +js и другими
+   процедурными операторами не копируются напрямую. При необходимости их
+   логика реализуется отдельно на JavaScript и проверяется на DOM-фикстурах.
+
+5. RU AdList: Counters (изучен, правила не включены)
+   https://easylist-downloads.adblockplus.org/cntblock.txt
+   Список предназначен главным образом для блокировки статистики и трекеров,
+   а не рекламных элементов. Сетевые правила счётчиков в эту версию не включены.
+
+Ограничения реализации
+- Списки не импортированы целиком: отобраны только правила, подходящие для
+  текущих категорий Я@ Block и не требующие собственных операторов uBlock.
+- Некоторые правила относятся к старым вариантам разметки и могут не совпадать
+  с текущим сайтом; это безопасно, но может оставить рекламу.
+- Слишком широкие правила, способные скрыть обычный контент (например, все
+  карточки рынка, всю карусель или любые ссылки target=_blank), не включались.
+- Правила локальные. Для обновления нужна новая сборка расширения.
+
+6. AdGuardFilters — AnnoyancesFilter/Other/sections/self-promo.txt
+   https://github.com/AdguardTeam/AdguardFilters/blob/master/AnnoyancesFilter/Other/sections/self-promo.txt
+   Yandex.Market selectors were reviewed in the Yandex.Market section (lines 2442-2492,
+   snapshot checked 2026-11-08) and selectively adapted as regular CSS.
+
+
+7. User-supplied saved page snapshots (MHTML), analyzed 2026-11-08
+   - Yandex Video search: explicit `li.SearchBlock.AdvSnippetFeature` and
+     `li.DirectFeature` / `.DirectInlineContainer` ad wrappers.
+   - Yandex Market: APIary `data-zone-data` advertiser metadata (`advTagInfo`)
+     and `data-zone-name="recomMadv"`. These selectors are derived from the
+     user's saved DOM samples, not copied from a third-party subscription.
+
+
+8. User-provided Yandex Maps MHTML snapshots (2026-11-11)
+   - URL pattern: https://yandex.ru/maps/...
+   - The outer ad host is `div.banner-view` with an ID containing `R-I-`.
+   - Rule is scoped to the dedicated `yandexMaps` category; it does not use inner closed-Shadow-DOM selectors.
+
+
+9. Пользовательский HTML-снимок Яндекс Еды (2026-11-11)
+   - Верхняя карусель: один внешний контейнер `.y99-i.y9kz5` содержит 10 слайдов
+     `.RXdvH > ._9ggTD.urbanads-dark`, каждый с явной меткой `Реклама` (`.ThRuh`).
+   - Добавлено только скрытие этого внешнего контейнера. Карточки ресторанов
+     и предложения не фильтруются.
+
+
+10. Пользовательский HTML-фрагмент Яндекс Афиши (2026-11-12)
+   - Rubric page: `.adfox[data-test-id="rubricPage.rubricAdfoxBranding.adfoxBanner"]`.
+   - Event page: `.adfox[data-test-id="eventPage.eventAdfoxBranding.adfoxBanner"]`.
+   - Скрываются только эти два внешних элемента AdFox.
+
+
+11. Два пользовательских MHTML Яндекс Афиши (2026-11-12)
+   - Rubric: immediate parent of `.adfox[data-test-id="rubricPage.rubricAdfoxBranding.adfoxBanner"]`.
+   - Event: immediate parent of `.adfox[data-test-id="eventPage.eventAdfoxBranding.adfoxBanner"]`;
+     in the captured event wrapper this also contains the image-only `#adfox--r4b7iy` AdFox unit.
+   - Hide the complete parent slot to remove both the creative and reserved spacing.
+
+
+12. Два пользовательских MHTML Яндекс Афиши и скриншоты оставшихся баннеров (2026-11-12)
+   - Rubric/home page: parent `.afisha-profit-banner` of `.afisha-profit[data-test-id="bigCommercialBanner.wrapper"]`.
+   - Rubric/home page: parent `.afisha-profit-banner` of `.afisha-profit[data-test-id="afishaProfit.wrapper"]`.
+   - Event page: `.extjkf` with direct child `div.adfox[id^="adfox--"]`; the captured wrapper contains both `#adfox--a6l2ft` and `#adfox--r4b7iy`.
+   - The previous AdFox branding selectors are retained.

@@ -1,0 +1,1 @@
+.mini-suggest__item-link[href*='yabs.yandex.ru/count/']:has(.mini-suggest__item-label) { display: none !important; }

@@ -1,0 +1,29 @@
+/* Yandex Weather: hide the five outer ad-slot articles verified in the supplied MHTML.
+   The 42 adWrapper creatives are inside closed Shadow DOM templates and cannot be
+   selected from the document stylesheet. Each outer article contains only its ad slot. */
+html:not([data-yaat-filter-disabled="yandexWeather"])
+  article:has(> div[class*="AppMoney_container"][id^="adv_R-I-"]),
+html:not([data-yaat-filter-disabled="yandexWeather"])
+  article:has(> div[class*="AppMoney_container"][id^="money-"]) {
+  display: none !important;
+}
+
+
+/* Yandex Weather: hide the five outer ad-slot articles verified in the supplied MHTML.
+   The 42 adWrapper creatives are inside closed Shadow DOM templates and cannot be
+   selected from the document stylesheet. Each outer article contains only its ad slot. */
+html:not([data-yaat-filter-disabled="yandexWeather"])
+  article:has(> div[class*="AppMoney_container"][id^="adv_R-I-"]),
+html:not([data-yaat-filter-disabled="yandexWeather"])
+  article:has(> div[class*="AppMoney_container"][id^="money-"]) {
+  display: none !important;
+}
+
+
+/* Правая колонка страницы целиком занята рекламными слотами: основной
+   AdFox внутри closed Shadow DOM и резервный пустой money-slot. Скрываем
+   отдельную рекламную aside-колонку, не затрагивая прогноз и карту. */
+html:not([data-yaat-filter-disabled="yandexWeather"])
+  aside[data-right-sidebar="true"]:has(#adfox_main_direct_sale) {
+  display: none !important;
+}

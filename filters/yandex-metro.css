@@ -1,0 +1,9 @@
+/* Yandex Metro: hide the outer Yandex Direct host. Its adWrapper nodes live inside a closed Shadow DOM and cannot be selected from the document. */
+html:not([data-yaat-filter-disabled="yandexMetro"]) div.banner-view[id*="R-I-"] {
+  display: none !important;
+}
+
+/* Yandex Metro: hide the outer Yandex Direct host. Its adWrapper nodes live inside a closed Shadow DOM and cannot be selected from the document. */
+html:not([data-yaat-filter-disabled="yandexMetro"]) div.banner-view[id*="R-I-"] {
+  display: none !important;
+}

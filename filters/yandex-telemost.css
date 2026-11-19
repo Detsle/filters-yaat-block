@@ -1,0 +1,12 @@
+/* CSS is supplied by css/yandexTelemost.css at document_start. */
+
+/* Яндекс Телемост — два подтверждённых промоблока.
+   Верхняя рекламная строка и левое corner-popup используют отдельные
+   promozavr queue. Скрываем только очереди, содержащие соответствующие
+   data-test-id из сохранённой страницы; остальной интерфейс не затрагивается. */
+html:not([data-yaat-filter-disabled="yandexTelemost"])
+  div[data-telemost-promozavr-queue="persistent"]:has(> [data-test-id="promotopline"]),
+html:not([data-yaat-filter-disabled="yandexTelemost"])
+  div[data-telemost-promozavr-queue="regular"]:has([data-test-id="promocornerPopup"]) {
+  display: none !important;
+}

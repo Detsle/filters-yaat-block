@@ -1,0 +1,33 @@
+/* Kinopoisk: hide the AdFox placeholder and the visible ad-labeled ReactModal popup. */
+html:not([data-yaat-filter-disabled="kinopoisk"])
+  #modal-container[class*="adfoxSpecialPopupModal"],
+html:not([data-yaat-filter-disabled="kinopoisk"])
+  body > .ReactModalPortal:has(> .ReactModal__Overlay > .ReactModal__Content[aria-label="Коммуникация"] div[class*="hoverButtonAd"] button[aria-label="Правовая информация"]) {
+  display: none !important;
+}
+
+
+/* Kinopoisk — fullscreen AdFox popup observed in the supplied MHTML.
+   Hide the full modal layer, not only the inner creative, so its overlay and
+   reserved viewport are removed. Other Kinopoisk dialogs remain untouched. */
+html:not([data-yaat-filter-disabled="kinopoisk"])
+  #modal-container[class*="adfoxSpecialPopupModal"] {
+  display: none !important;
+}
+
+
+/* Kinopoisk desktop top AdFox/RBT banner. Hide its immediate layout wrapper
+   only when the dedicated banner host contains the explicit ad label. */
+html:not([data-yaat-filter-disabled="kinopoisk"])
+  div:has(> #foxaddesktop_top_banner [data-label="true"]) {
+  display: none !important;
+}
+
+
+/* Kinopoisk: the currently displayed ad popup is rendered in a separate
+   ReactModalPortal, not inside the empty #modal-container AdFox placeholder.
+   The dialog has aria-label="Коммуникация" and an explicit ad legal-info button. */
+html:not([data-yaat-filter-disabled="kinopoisk"])
+  body > .ReactModalPortal:has(> .ReactModal__Overlay > .ReactModal__Content[aria-label="Коммуникация"] div[class*="hoverButtonAd"] button[aria-label="Правовая информация"]) {
+  display: none !important;
+}

@@ -1,0 +1,77 @@
+
+
+	/* ------------------------------- Яндекс Почта -------------------------------- */
+
+	/* Верхний баннер */
+	div[id^="js-mail-layout-content-header"] > div[data-testid="yagpt-neurofilter-banner-portal"] + div:not([data-testid]),
+
+	/* Правая боковая колонка */
+	div[data-testid="page-layout_body_container"] > div[data-testid^="page-layout_right-column_container"], /* Старая версия */
+	#global-bar-container + div > div:last-child:not([id]),
+
+	/* Баннер внизу левой колонки */
+	/* div[data-testid="aside_container"] > div[data-testid="aside_promo_carousel_banner"], */
+
+	/* Большой popup-баннер */
+	body > div[data-test-id="promopopup"],
+
+	/* Всплывающий справа внизу (Алиса Про) */
+	#js-react-app > div[class*="RightSideSheet"]:has([data-test-id="promosideSheet"]), /* Старая версия */
+	#js-layout-inner > #js-floating-buttons:has(> #js-neuroexpert-button),
+
+	/* Всплывающий слева (Расширьте Диск) */
+	#js-react-app > div[class*="CornerPopup"],
+
+	/* Всплывающий слева (Безлимитный Диск) */
+	body > .Popup2_target_anchor:has([data-test-id="promotooltip"]),
+
+	/* Внизу письма (Скачать Яндекс Почту на телефон по QR-коду) */
+	#js-main-content div[class*="MobileAppPromo-m__wrapper"],
+
+	/* -------------------------------- Яндекс Диск -------------------------------- */
+
+	/* Верхний баннер */
+	.root__content-wrap > .top-direct-line,
+
+	/* Нижний баннер */
+	.root__content-wrap > .root__bottom-ad,
+
+	/* Баннер внизу левой колонки */
+	/* .LeftColumn > .LeftColumn__InnerWrapperBottom, */
+
+	/* Большой popup-баннер */
+	body > div[data-test-id="promofullscreen"]
+
+	/* --------------------------- Прощаемся с рекламой ---------------------------- */
+
+	{display: none !important}
+
+	/* ------------------------------- Прочие стили -------------------------------- */
+
+	/* Разблокируем скролл тела (блочится при всплытии popup-баннеров) */
+	body {overflow: visible !important}
+
+	/* Убираем пространство после рекламы на странице файлов в Я.Диске */
+	.root__content-container, .client-listing {display: flex; flex-direction: column}
+	.ListingDiskStub_showBottomDirect {--bottom-height: 20px; flex-grow: 1}
+	.ListingDiskStub_showBottomDirect .ListingDiskStub__top {grid-template-rows: 1fr auto}
+
+
+
+
+/* RU AdList / BitBlock: Yandex Mail and Disk promotional/ad containers. */
+.b-direct-stripe,
+div[class*="DirectLine"],
+[data-testid="aside_promo_carousel_banner"] > div,
+div[class*=" CornerPopup_body_"],
+div[class*="MobileAppPromo-"],
+div[class^="Banner-m__root"],
+div[class^="SpaceInformer-m_"] > a.Orb-Button_view_brand,
+.app-promo-banner,
+.mail360-banner,
+.mobile-badges,
+.top-banner,
+.ufo-yaplus,
+div[class^="direct"]:not([class^="directory-content"]) {
+  display: none !important;
+}
