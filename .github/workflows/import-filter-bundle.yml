@@ -55,7 +55,7 @@ jobs:
                           raise SystemExit(f"Unexpected bundle root: {member.name}")
                       if member.issym() or member.islnk() or member.isdev():
                           raise SystemExit(f"Unsupported archive member: {member.name}")
-                  archive.extractall(extract_root, filter="data")
+                  archive.extractall(extract_root)
 
               source_root = extract_root / "filters-yaat-block"
               manifest_path = source_root / "filters-manifest.json"
@@ -77,11 +77,10 @@ jobs:
                   if digest != meta["sha256"] or len(data) != meta["bytes"]:
                       raise SystemExit(f"Integrity check failed: {category}")
                   text = data.decode("utf-8")
-                  if "@import" in text.lower() or "javascript:" in text.lower() or "expression(" in text.lower() or "url(" in text.lower():
+                  lowered = text.lower()
+                  if "@import" in lowered or "javascript:" in lowered or "expression(" in lowered or "url(" in lowered:
                       raise SystemExit(f"External or executable CSS construct found: {category}")
 
-              # Replace the incomplete hand-created draft tree with the exact
-              # validated package. Preserve only .git and this import workflow.
               repo_root = Path.cwd()
               for child in list(repo_root.iterdir()):
                   if child.name in {".git", ".github"}:
