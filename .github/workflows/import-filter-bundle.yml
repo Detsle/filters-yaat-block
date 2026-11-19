@@ -83,7 +83,7 @@ jobs:
 
               repo_root = Path.cwd()
               for child in list(repo_root.iterdir()):
-                  if child.name in {".git", ".github"}:
+                  if child.name in {".git", ".github", "repository-bundle"}:
                       continue
                   if child.is_dir():
                       shutil.rmtree(child)
