@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - repository-bundle/parts/*.b64
+      - repository-bundle/parts/part-16.b64
 
 permissions:
   contents: write
@@ -33,8 +33,9 @@ jobs:
 
           parts_dir = Path("repository-bundle/parts")
           parts = sorted(parts_dir.glob("part-*.b64"))
-          if len(parts) != 16:
-              raise SystemExit(f"Expected 16 bundle parts, found {len(parts)}")
+          expected_names = [f"part-{i:02d}.b64" for i in range(1, 17)]
+          if [p.name for p in parts] != expected_names:
+              raise SystemExit("Filter bundle parts are incomplete or out of order")
           raw = "".join(part.read_text(encoding="ascii").strip() for part in parts)
           archive_bytes = base64.b64decode(raw, validate=True)
 
@@ -48,11 +49,9 @@ jobs:
                   bad = archive.testzip()
                   if bad:
                       raise SystemExit(f"ZIP CRC error: {bad}")
-
                   names = archive.namelist()
                   if len(names) != len(set(names)):
                       raise SystemExit("Duplicate paths in bundle")
-
                   for name in names:
                       item = PurePosixPath(name)
                       if item.is_absolute() or ".." in item.parts:
@@ -70,7 +69,6 @@ jobs:
               manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
               if manifest.get("schemaVersion") != 1:
                   raise SystemExit("Unsupported filters manifest schema")
-
               categories = manifest.get("categories")
               if not isinstance(categories, dict) or not categories:
                   raise SystemExit("Manifest has no filter categories")
@@ -79,17 +77,14 @@ jobs:
                   relative = PurePosixPath(meta["path"])
                   if relative.is_absolute() or ".." in relative.parts:
                       raise SystemExit(f"Unsafe manifest path: {meta['path']}")
-                  filter_path = source_root.joinpath(*relative.parts)
-                  data = filter_path.read_bytes()
-                  digest = hashlib.sha256(data).hexdigest()
-                  if digest != meta["sha256"]:
+                  data = source_root.joinpath(*relative.parts).read_bytes()
+                  if hashlib.sha256(data).hexdigest() != meta["sha256"]:
                       raise SystemExit(f"SHA-256 mismatch: {category}")
                   if len(data) != meta["bytes"]:
                       raise SystemExit(f"Size mismatch: {category}")
 
-              repo_root = Path.cwd()
               for source in source_root.iterdir():
-                  destination = repo_root / source.name
+                  destination = Path.cwd() / source.name
                   if source.is_dir():
                       if destination.exists():
                           shutil.rmtree(destination)
@@ -98,8 +93,7 @@ jobs:
                       shutil.copy2(source, destination)
 
           shutil.rmtree(parts_dir.parent)
-
-          print(f"Validated and imported {len(categories)} filter categories, version {manifest.get('filterVersion')}")
+          print(f"Validated and imported {len(categories)} categories, version {manifest.get('filterVersion')}")
 
       - name: Commit imported filter files
         shell: bash
