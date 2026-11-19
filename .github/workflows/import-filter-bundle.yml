@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - repository-bundle.zip.b64
+      - repository-bundle/parts/*.b64
 
 permissions:
   contents: write
@@ -26,14 +26,16 @@ jobs:
           import base64
           import hashlib
           import json
-          import os
           import shutil
           import tempfile
           import zipfile
           from pathlib import Path, PurePosixPath
 
-          bundle_file = Path("repository-bundle.zip.b64")
-          raw = bundle_file.read_text(encoding="ascii").strip()
+          parts_dir = Path("repository-bundle/parts")
+          parts = sorted(parts_dir.glob("part-*.b64"))
+          if len(parts) != 16:
+              raise SystemExit(f"Expected 16 bundle parts, found {len(parts)}")
+          raw = "".join(part.read_text(encoding="ascii").strip() for part in parts)
           archive_bytes = base64.b64decode(raw, validate=True)
 
           with tempfile.TemporaryDirectory() as temp_dir:
@@ -87,8 +89,6 @@ jobs:
 
               repo_root = Path.cwd()
               for source in source_root.iterdir():
-                  if source.name == "repository-bundle.zip.b64":
-                      continue
                   destination = repo_root / source.name
                   if source.is_dir():
                       if destination.exists():
@@ -97,8 +97,9 @@ jobs:
                   else:
                       shutil.copy2(source, destination)
 
-              bundle_file.unlink()
-              print(f"Validated and imported {len(categories)} filter categories, version {manifest.get('filterVersion')}")
+          shutil.rmtree(parts_dir.parent)
+
+          print(f"Validated and imported {len(categories)} filter categories, version {manifest.get('filterVersion')}")
 
       - name: Commit imported filter files
         shell: bash
