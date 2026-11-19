@@ -82,3 +82,9 @@
    - Rubric/home page: parent `.afisha-profit-banner` of `.afisha-profit[data-test-id="afishaProfit.wrapper"]`.
    - Event page: `.extjkf` with direct child `div.adfox[id^="adfox--"]`; the captured wrapper contains both `#adfox--a6l2ft` and `#adfox--r4b7iy`.
    - The previous AdFox branding selectors are retained.
+
+13. Пользовательский MHTML Яндекс Карт (2026-11-19)
+   - Домашняя боковая панель: пустой слот рекламы
+     `.sidebar-view._name_home .advert-spacer-view` с фиксированной высотой 300 px.
+   - Скрывается только рекламная заглушка домашней панели; карта, маркеры,
+     результаты поиска и блок рекомендаций не затрагиваются.

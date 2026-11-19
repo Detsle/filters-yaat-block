@@ -12,3 +12,10 @@ html:not([data-yaat-filter-disabled="yandexMaps"])
   div.banner-view[id*="R-I-"] {
   display: none !important;
 }
+
+/* Yandex Maps home sidebar: remove the empty 300px advertising spacer
+   confirmed in the user-provided MHTML snapshot (2026-11-19). */
+html:not([data-yaat-filter-disabled="yandexMaps"])
+  .sidebar-view._name_home .advert-spacer-view {
+  display: none !important;
+}

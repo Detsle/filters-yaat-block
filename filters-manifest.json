@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "filterVersion": "1.0.0",
-  "generatedAt": "2026-11-19T00:00:00Z",
+  "filterVersion": "1.0.1",
+  "generatedAt": "2026-11-19T19:34:00Z",
   "minimumExtensionVersion": "0.4.61.7",
   "categories": {
     "dzenSuggest": {
@@ -46,8 +46,8 @@
     },
     "yandexMaps": {
       "path": "filters/yandex-maps.css",
-      "sha256": "c64823c9a4ecc8a55e1856096da01302eb801fad05a08e8523e3866670e44b06",
-      "bytes": 572
+      "sha256": "5940c7bd2c2859b3f8ba9d897032b6db9ad4dd1e914a9e5ee695c60a262187c2",
+      "bytes": 840
     },
     "yandexEda": {
       "path": "filters/yandex-eda.css",
