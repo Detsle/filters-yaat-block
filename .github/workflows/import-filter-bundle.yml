@@ -1,0 +1,114 @@
+name: Import filter database bundle
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - repository-bundle.zip.b64
+
+permissions:
+  contents: write
+
+jobs:
+  import-filter-database:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Validate and extract filter database
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64
+          import hashlib
+          import json
+          import os
+          import shutil
+          import tempfile
+          import zipfile
+          from pathlib import Path, PurePosixPath
+
+          bundle_file = Path("repository-bundle.zip.b64")
+          raw = bundle_file.read_text(encoding="ascii").strip()
+          archive_bytes = base64.b64decode(raw, validate=True)
+
+          with tempfile.TemporaryDirectory() as temp_dir:
+              archive_path = Path(temp_dir) / "filters.zip"
+              extract_root = Path(temp_dir) / "extract"
+              archive_path.write_bytes(archive_bytes)
+              extract_root.mkdir()
+
+              with zipfile.ZipFile(archive_path) as archive:
+                  bad = archive.testzip()
+                  if bad:
+                      raise SystemExit(f"ZIP CRC error: {bad}")
+
+                  names = archive.namelist()
+                  if len(names) != len(set(names)):
+                      raise SystemExit("Duplicate paths in bundle")
+
+                  for name in names:
+                      item = PurePosixPath(name)
+                      if item.is_absolute() or ".." in item.parts:
+                          raise SystemExit(f"Unsafe path in bundle: {name}")
+                      if not item.parts or item.parts[0] != "filters-yaat-block":
+                          raise SystemExit(f"Unexpected bundle root: {name}")
+                      if name.endswith("/"):
+                          continue
+                      target = extract_root.joinpath(*item.parts)
+                      target.parent.mkdir(parents=True, exist_ok=True)
+                      target.write_bytes(archive.read(name))
+
+              source_root = extract_root / "filters-yaat-block"
+              manifest_path = source_root / "filters-manifest.json"
+              manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+              if manifest.get("schemaVersion") != 1:
+                  raise SystemExit("Unsupported filters manifest schema")
+
+              categories = manifest.get("categories")
+              if not isinstance(categories, dict) or not categories:
+                  raise SystemExit("Manifest has no filter categories")
+
+              for category, meta in categories.items():
+                  relative = PurePosixPath(meta["path"])
+                  if relative.is_absolute() or ".." in relative.parts:
+                      raise SystemExit(f"Unsafe manifest path: {meta['path']}")
+                  filter_path = source_root.joinpath(*relative.parts)
+                  data = filter_path.read_bytes()
+                  digest = hashlib.sha256(data).hexdigest()
+                  if digest != meta["sha256"]:
+                      raise SystemExit(f"SHA-256 mismatch: {category}")
+                  if len(data) != meta["bytes"]:
+                      raise SystemExit(f"Size mismatch: {category}")
+
+              repo_root = Path.cwd()
+              for source in source_root.iterdir():
+                  if source.name == "repository-bundle.zip.b64":
+                      continue
+                  destination = repo_root / source.name
+                  if source.is_dir():
+                      if destination.exists():
+                          shutil.rmtree(destination)
+                      shutil.copytree(source, destination)
+                  else:
+                      shutil.copy2(source, destination)
+
+              bundle_file.unlink()
+              print(f"Validated and imported {len(categories)} filter categories, version {manifest.get('filterVersion')}")
+
+      - name: Commit imported filter files
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No filter changes to commit"
+          else
+            git commit -m "Import filters database 1.0.0"
+            git push origin HEAD:main
+          fi
