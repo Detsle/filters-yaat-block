@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "filterVersion": "1.0.3",
-  "generatedAt": "2026-11-20T12:16:25Z",
+  "filterVersion": "1.0.4",
+  "generatedAt": "2026-11-20T14:30:11.765Z",
   "minimumExtensionVersion": "0.4.61.7",
   "categories": {
     "dzenSuggest": {
@@ -11,8 +11,8 @@
     },
     "dzen": {
       "path": "filters/dzen.css",
-      "sha256": "a88fc31ca26f3b83bda5c16190a176e4aa69ba5342e8634ceb8d8e9a6f977ff1",
-      "bytes": 11549
+      "sha256": "aac6e7ed0ea3c23ae688f22d4472dd98efd3d55a8901e965f79e6fb091c30f9b",
+      "bytes": 11316
     },
     "mail": {
       "path": "filters/mailru.css",
