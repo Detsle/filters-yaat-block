@@ -249,3 +249,11 @@ div[class*="__articleLayout-"] > div[class*="__yFb0BmwColumn-"] {
 [data-c8mwxdons="discrete-story-card"] > div[class*="w4ltZNulU1PM9"] {
   display: none !important;
 }
+
+/* BETA: Dzen AdGuard Extra slot converted to CSS.
+   The parent placeholder uses padding-top; its direct child uses the
+   matching negative margin-top. Move only that exact wrapper out of view. */
+div[style*="padding-top: 12.362637363%"]:has(> div[style*="margin-top: -12.362637363%"]) {
+  position: absolute !important;
+  top: -99999px !important;
+}
