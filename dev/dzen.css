@@ -5,12 +5,17 @@
   display: none !important;
 }
 
-/* 2. Рекламные контейнеры, которые Дзен подгружает по мере прокрутки */
+/* 2. Внутренние рекламные контейнеры, подгружаемые при прокрутке */
 [data-c8mwxdons="preloaded-swap"] {
   display: none !important;
 }
 
-/* 3. Рекламные карточки в ленте, подборках и боковых блоках */
-div.news-c6dTJYeTAzWYh[class*="_position_"].news-c6dTJYeTAzWYh_type_multi {
+/* 3. Все рекламные карточки семейства news, независимо от варианта (multi, promo и др.) */
+div.news-c6dTJYeTAzWYh[class*="_position_"] {
+  display: none !important;
+}
+
+/* 4. Явный маркер промоблока в правой колонке */
+[data-c8mwxdons="news-right-promo-v3"] {
   display: none !important;
 }
