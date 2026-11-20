@@ -218,8 +218,3 @@ div[data-entrypoint="feed_popup"] {
   display: none !important;
 }
 
-/* Центральный рекламный виджет Дзена: две рекламные карточки */
-div[id]:has(> div[style*="padding-top"][style*="position: relative"] [role="note"]) {
-  display: none !important;
-}
-
