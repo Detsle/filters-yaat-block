@@ -1,6 +1,1 @@
 .mini-suggest__item-link[href*='yabs.yandex.ru/count/']:has(.mini-suggest__item-label) { display: none !important; }
-
-/* Dzen search panel: promotional advent banner */
-[class*="dzen-layout--discover-advent-banner-desktop__adventBanner"] {
-  display: none !important;
-}
