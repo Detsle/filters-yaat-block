@@ -5,12 +5,12 @@
   display: none !important;
 }
 
-/* 2. Отдельный рекламный блок, подгружаемый в слот Дзена */
-[data-c8mwxdons="preloaded-swap"]:has(a[href*="t.mail.ru/redir/"]) {
+/* 2. Рекламные контейнеры, которые Дзен подгружает по мере прокрутки */
+[data-c8mwxdons="preloaded-swap"] {
   display: none !important;
 }
 
-/* 3. Рекламные карточки Дзена в ленте и digest */
-div[class*="news-c6dTJYeTAzWYh"][class*="_position_"]:has(a[href*="t.mail.ru/redir/"]) {
+/* 3. Рекламные карточки в ленте, подборках и боковых блоках */
+div.news-c6dTJYeTAzWYh[class*="_position_"].news-c6dTJYeTAzWYh_type_multi {
   display: none !important;
 }
