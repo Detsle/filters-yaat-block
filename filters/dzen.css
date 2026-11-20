@@ -218,3 +218,34 @@ div[data-entrypoint="feed_popup"] {
   display: none !important;
 }
 
+/* ---------------------- Дополнительные фильтры Дзена ---------------------- */
+
+/* 1. Полноэкранный рекламный попап */
+[data-fullscreen-element="root"] {
+  display: none !important;
+}
+
+/* 2. Внутренние рекламные контейнеры, подгружаемые при прокрутке */
+[data-c8mwxdons="preloaded-swap"] {
+  display: none !important;
+}
+
+/* 3. Все рекламные карточки семейства news, независимо от варианта */
+div.news-c6dTJYeTAzWYh[class*="_position_"] {
+  display: none !important;
+}
+
+/* 4. Явный маркер промоблока в правой колонке */
+[data-c8mwxdons="news-right-promo-v3"] {
+  display: none !important;
+}
+
+/* 5. Правая колонка статьи */
+div[class*="__articleLayout-"] > div[class*="__yFb0BmwColumn-"] {
+  display: none !important;
+}
+
+/* 6. Правая колонка новостных карточек на страницах /news/story/ */
+[data-c8mwxdons="discrete-story-card"] > div[class*="w4ltZNulU1PM9"] {
+  display: none !important;
+}
