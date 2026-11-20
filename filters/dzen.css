@@ -223,7 +223,3 @@ div[id]:has(> div[style*="padding-top"][style*="position: relative"] [role="note
   display: none !important;
 }
 
-/* Центральный рекламный виджет Дзена с рекламными карточками */
-div[id]:has(> div[style*="padding-top"][style*="position: relative"] [data-yb6cwm9k-click="category"][role="note"]) {
-  display: none !important;
-}
