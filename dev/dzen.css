@@ -5,7 +5,7 @@
   display: none !important;
 }
 
-/* 2. Правый рекламный контейнер в карточке материала */
-div.arkhone-don:has([data-can-prevent-browsing="true"]) {
+/* 2. Внешний контейнер рекламной карточки справа */
+div.arkhone-don {
   display: none !important;
 }
