@@ -19,3 +19,8 @@ div.news-c6dTJYeTAzWYh[class*="_position_"] {
 [data-c8mwxdons="news-right-promo-v3"] {
   display: none !important;
 }
+
+/* 5. Скрываем правую колонку статьи целиком на всех страницах Дзена */
+div[class*="__articleLayout-"] > div[class*="__yFb0BmwColumn-"] {
+  display: none !important;
+}
