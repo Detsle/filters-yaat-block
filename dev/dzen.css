@@ -29,8 +29,10 @@ div[class*="__articleLayout-"] > div[class*="__yFb0BmwColumn-"] {
 [data-c8mwxdons="discrete-story-card"] > div[class*="w4ltZNulU1PM9"] {
   display: none !important;
 }
-/* 7. Центральный рекламный виджет: скрываем контейнер сразу по пустому aspect-ratio placeholder,
-   не ожидая появления рекламных карточек с role="note" */
-div[id]:has(> div[style*="padding-top"][style*="position: relative"]) {
+
+/* 7. Центральный рекламный виджет под поиском.
+   Скрываем внешний слот по его положению в MicroRoot-дереве.
+   Не привязываемся к поздно появляющимся placeholder/creative атрибутам. */
+div[id$="MicroRoot"] > div > div > div > div[id] {
   display: none !important;
 }
