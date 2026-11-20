@@ -180,4 +180,12 @@
   display: none !important;
 }
 
+
+  /* VK Motion Ads fullscreen popup.
+     Match the outer 1px SSP gate only when it contains a fixed viewport
+     creative explicitly marked as fullscreen. */
+  div[id^="ssp-b-"]:has(> div[id^="ssp-b-"] > div[style*="position: fixed"][style*="100vh"] [isfullscreen="true"]) {
+    display: none !important;
+  }
+
 }
