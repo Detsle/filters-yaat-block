@@ -29,3 +29,7 @@ div[class*="__articleLayout-"] > div[class*="__yFb0BmwColumn-"] {
 [data-c8mwxdons="discrete-story-card"] > div[class*="w4ltZNulU1PM9"] {
   display: none !important;
 }
+/* 7. Центральный рекламный виджет Дзена: две карточки под поиском */
+div[id]:has(> div[style*="padding-top"][style*="position: relative"] [role="note"]) {
+  display: none !important;
+}
