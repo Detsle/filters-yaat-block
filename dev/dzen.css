@@ -29,10 +29,3 @@ div[class*="__articleLayout-"] > div[class*="__yFb0BmwColumn-"] {
 [data-c8mwxdons="discrete-story-card"] > div[class*="w4ltZNulU1PM9"] {
   display: none !important;
 }
-
-/* 7. Центральный рекламный слот под поиском.
-   Блокируем сам aspect-ratio placeholder, не ожидая гидратации
-   рекламных карточек и появления role="note". */
-div[style*="padding-top: 12.362637363%"][style*="position: relative"] {
-  display: none !important;
-}
