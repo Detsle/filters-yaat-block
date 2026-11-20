@@ -30,9 +30,10 @@ div[class*="__articleLayout-"] > div[class*="__yFb0BmwColumn-"] {
   display: none !important;
 }
 
-/* 7. Центральный рекламный виджет под поиском.
-   Скрываем только сам рекламный контейнер, не затрагивая соседнюю
-   строку с погодой, городом, телепрограммой и курсами валют. */
-div[id$="MicroRoot"] > div > div > div > div[id] {
+/* 7. Центральный рекламный виджет.
+   На текущей DOM-структуре внешний слот не имеет id.
+   Выбираем aspect-ratio контейнер, внутри которого после гидратации
+   появляются рекламные метки role="note" с data-yb6cwm9k-click="category". */
+div[style*="padding-top"][style*="position: relative"]:has(> div[style*="margin-top"] [role="note"][data-yb6cwm9k-click="category"]) {
   display: none !important;
 }
