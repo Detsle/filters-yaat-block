@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "filterVersion": "1.0.7",
-  "generatedAt": "2026-11-20T19:10:01.235Z",
+  "generatedAt": "2026-11-20T19:12:07.410Z",
   "minimumExtensionVersion": "0.4.61.7",
   "categories": {
     "dzenSuggest": {
@@ -16,7 +16,7 @@
     },
     "mail": {
       "path": "filters/mailru.css",
-      "sha256": "df75f3230eb9d9abbaa4935e7c55a22401276ad474e2c0f1ca3ba8160965b685",
+      "sha256": "a499421d12a0d120b69121c9d48f46af8f56ccacb47760b7da9b92afcf5dff1f",
       "bytes": 9890
     },
     "yandexMail": {
