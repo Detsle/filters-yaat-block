@@ -31,8 +31,8 @@ div[class*="__articleLayout-"] > div[class*="__yFb0BmwColumn-"] {
 }
 
 /* 7. Центральный рекламный виджет под поиском.
-   Скрываем внешний слот по его положению в MicroRoot-дереве.
-   Не привязываемся к поздно появляющимся placeholder/creative атрибутам. */
-div[id$="MicroRoot"] > div > div > div > div[id] {
+   Скрываем не только рекламный элемент, но и его flex-обёртку,
+   которая оставляет пустые 45 px за счёт соседнего элемента и padding. */
+div[id$="MicroRoot"] > div > div > div:has(> div[id]) {
   display: none !important;
 }
