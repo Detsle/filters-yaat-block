@@ -217,3 +217,8 @@ div[class*="content--corner-banner__root"]:has(> div[data-entrypoint="feed_popup
 div[data-entrypoint="feed_popup"] {
   display: none !important;
 }
+
+/* Нативная рекламная карточка в центральной ленте Дзена */
+div[class*="main-single-feed-single-desktop-right__root"]:has(a[class*="ad-link"]) {
+  display: none !important;
+}
