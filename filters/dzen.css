@@ -84,7 +84,7 @@
 	div[class*="article-full-right-ad-column"],
 	.content-id-for-morda div[itemscope] > div.article-container > div:not([class*="contentColumn"]) > div:not([class*="sideInfoBlock"]),
 
-	/* В теле статьи */ */
+	/* В теле статьи */
 	/* div[data-testid*="embed-block_external"], */
 
 	/* В конце статьи, перед комментариями */
@@ -203,17 +203,6 @@ div[class^="dzen-desktop--feed-one-column-ad_"],
 div[class^="video"][class*="-advert-"],
 article:has(> div[data-ad-type]),
 div[class*="article-render-mobile__embed_embed-type_yandex-direct"] {
-  display: none !important;
-}
-
-/* Панель поиска Дзена: рекламный баннер над карточками */
-div[class*="dzen-layout--discover-advent-banner-desktop__bannerWrapper"] {
-  display: none !important;
-}
-
-/* Всплывающее предложение подписки Дзен Про */
-div[class*="content--corner-banner__root"]:has(> div[data-entrypoint="feed_popup"]),
-div[data-entrypoint="feed_popup"] {
   display: none !important;
 }
 
