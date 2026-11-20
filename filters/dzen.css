@@ -216,3 +216,15 @@ div[class*="content--corner-banner__root"]:has(> div[data-entrypoint="feed_popup
 div[data-entrypoint="feed_popup"] {
   display: none !important;
 }
+
+
+/* Панель поиска Дзена: рекламный баннер над карточками */
+div[class*="dzen-layout--discover-advent-banner-desktop__bannerWrapper"] {
+  display: none !important;
+}
+
+/* Всплывающее предложение подписки Дзен Про */
+div[class*="content--corner-banner__root"]:has(> div[data-entrypoint="feed_popup"]),
+div[data-entrypoint="feed_popup"] {
+  display: none !important;
+}
