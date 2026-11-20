@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "revision": 16,
-  "generatedAt": "2026-11-20T16:48:00.000Z",
+  "revision": 17,
+  "generatedAt": "2026-11-20T17:00:00.000Z",
   "categories": {
     "dzen": {
       "path": "dev/dzen.css",
-      "sha256": "4f90afe784f9ada03c26a957af8518582148147362385586a780aeed68e95378",
-      "bytes": 1606
+      "sha256": "51630e00c39babf065a8b91e97d838abc79c37247f3396fff099d2eed3ede114",
+      "bytes": 1253
     }
   }
 }
