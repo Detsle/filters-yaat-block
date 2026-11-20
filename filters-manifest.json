@@ -11,8 +11,8 @@
     },
     "dzen": {
       "path": "filters/dzen.css",
-      "sha256": "d0ada8e9798e78955742edc00c9747924ccffc75e8d18df594f481d92210fe8f",
-      "bytes": 11765
+      "sha256": "1cc0bec4647f6285f8a633cee19367a1a9ff0c917a4bada56b31b63c8311f823",
+      "bytes": 11315
     },
     "mail": {
       "path": "filters/mailru.css",
